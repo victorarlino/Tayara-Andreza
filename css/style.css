@@ -934,9 +934,9 @@ img {
 /* Seção de Redes Sociais Destaque */
 .social-highlights-section {
     padding: 60px 0;
-    background: rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-top: none;
+    border-bottom: none;
 }
 
 .social-highlights {
@@ -1348,7 +1348,7 @@ img {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 60px;
     z-index: 1;
-    box-shadow: 0 20px 60px rgb(255, 0, 0);
+    box-shadow: 0 20px 60px rgb(255, 0, 51);
 }
 
 .about-text h2 {
