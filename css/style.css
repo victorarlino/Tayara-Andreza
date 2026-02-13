@@ -348,6 +348,13 @@ img {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Ícones maiores na seção de highlights */
+.social-highlights .social-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+}
+
 .footer-copyright {
     text-align: center;
     padding-top: 30px;
