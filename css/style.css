@@ -343,7 +343,7 @@ img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
+    background: linear-gradient(135deg, #000000 0%, #3a3a3a 70%, #4e4e4e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,7 +355,8 @@ img {
 
 .social-icon:hover {
     transform: translateY(-8px) rotate(360deg) scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(244, 194, 194, 0.5);
+    background: linear-gradient(135deg)
 }
 
 /* Ícones maiores na seção de highlights */
@@ -1389,7 +1390,7 @@ img {
 .schedule-section {
     padding: 70px 0;
     background: transparent;
-    min-height: auto;
+    min-height: auto;   
     display: flex;
     align-items: center;
 }
@@ -1420,7 +1421,7 @@ img {
 
 .schedule-date {
     background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px 12px;
     border-radius: 12px;
     text-align: center;
@@ -1449,17 +1450,17 @@ img {
 .schedule-info h3 {
     font-size: 0.95rem;
     margin-bottom: 8px;
-    color: var(--primary-pink);
+    color: black
 }
 
 .schedule-info p {
     margin: 5px 0;
-    color: #666;
+    color: #000000;
     font-size: 0.9rem;
 }
 
 .schedule-info i {
-    color: var(--secondary-orange);
+    color: #000000;
     margin-right: 8px;
 }
 
@@ -1519,7 +1520,7 @@ img {
 .form-group textarea {
     width: 100%;
     padding: 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ffffff;
     border-radius: 15px;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
@@ -1529,14 +1530,14 @@ img {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-pink);
+    border-color: white
 }
 
 .contact-info {
     background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
     padding: 40px;
     border-radius: 30px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .contact-info h3 {
@@ -1557,7 +1558,7 @@ img {
     padding: 20px;
     background: rgba(251, 249, 249, 0.2);
     border-radius: 15px;
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     transition: var(--transition);
 }
