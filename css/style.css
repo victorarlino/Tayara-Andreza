@@ -343,11 +343,11 @@ img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
+    background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1.3rem;
     transition: all 0.4s ease;
@@ -1512,7 +1512,7 @@ img {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: var(--text-dark);
+    color: #ffffff;
 }
 
 .form-group input,
@@ -1555,7 +1555,7 @@ img {
     align-items: center;
     gap: 15px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(251, 249, 249, 0.2);
     border-radius: 15px;
     color: white;
     text-decoration: none;
