@@ -175,6 +175,7 @@ img {
 
 .nav-menu ul li {
     margin: 0;
+    list-style: none;
 }
 
 .nav-link {
@@ -222,6 +223,8 @@ img {
     list-style: none;
     display: inline-block;
     white-space: nowrap;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .nav-login-btn:hover {
@@ -233,6 +236,15 @@ img {
 .nav-login-btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 8px rgba(244, 194, 194, 0.3);
+}
+
+@media (max-width: 768px) {
+    .nav-login-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Botões */
