@@ -1,0 +1,97 @@
+# Configuração .htaccess para tayaraandreza.com
+# Otimizações de SEO e Performance
+
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Remove www para melhor SEO
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # HTTPS Redirect
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Remove trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^(.+)/$
+    RewriteRule ^(.+)/$ /$1 [R=301,L]
+    
+    # Previne acesso a arquivos sensíveis
+    RewriteRule ^(README|sitemap|robots)\.(.*)$ - [F]
+</IfModule>
+
+# Compressão Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images (1 month)
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/gif "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    
+    # CSS e JavaScript (30 days)
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType text/javascript "access plus 30 days"
+    
+    # Fonts (1 year)
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    
+    # HTML (24 hours)
+    ExpiresByType text/html "access plus 24 hours"
+    
+    # Default
+    ExpiresDefault "access plus 2 hours"
+</IfModule>
+
+# Cache Headers
+<IfModule mod_headers.c>
+    # Cache static files
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|otf|svg)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    
+    # HTML cache
+    <FilesMatch "\.(html|htm|xml)$">
+        Header set Cache-Control "max-age=86400, public"
+    </FilesMatch>
+    
+    # Disable cache for dynamic content
+    <FilesMatch "\.(php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+    
+    # Vary header para cache correto
+    Header append Vary "Accept-Encoding"
+</IfModule>
+
+# Previne acesso directory listing
+Options -Indexes
+
+# Charset
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .xml .json .php
+
+# ETag para melhor cache
+<IfModule mod_headers.c>
+    Header unset ETag
+    FileETag None
+</IfModule>
+
+# Segurança básica
+<FilesMatch "\.(env|config|json|xml)$">
+    Deny from all
+</FilesMatch>

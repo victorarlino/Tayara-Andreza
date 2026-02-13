@@ -1,0 +1,23 @@
+# Robots.txt for Tayara Andreza Website
+# https://tayaraandreza.com/
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /*.login
+
+# Sitemap
+Sitemap: https://tayaraandreza.com/sitemap.xml
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Powered by SEO optimization for artist visibility
