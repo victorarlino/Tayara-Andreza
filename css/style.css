@@ -198,6 +198,27 @@ img {
     background: rgba(0, 0, 0, 0.1);
 }
 
+/* Botão de Login no Header */
+.nav-login-btn {
+    background: rgba(255, 107, 157, 0.8);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-login-btn:hover {
+    background: rgba(255, 107, 157, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Botões */
 .btn {
     display: inline-block;
