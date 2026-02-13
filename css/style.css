@@ -343,7 +343,7 @@ img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
     display: flex;
     align-items: center;
     justify-content: center;
