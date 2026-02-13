@@ -906,38 +906,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
-}
-
-.social-highlight-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--primary-pink);
-    font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.4s ease;
-}
-
-.social-highlight-item i {
-    font-size: 1.3rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    transition: all 0.4s ease;
-}
-
-.social-highlight-item:hover i {
-    transform: translateY(-8px) rotate(360deg) scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .gallery-grid {
