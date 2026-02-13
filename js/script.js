@@ -763,3 +763,220 @@ if (bioBtn && bioModal) {
         }
     });
 }
+
+// ========== CARROSSEL DE AGENDA ==========
+const scheduleListContainer = document.getElementById('scheduleListContainer');
+const scheduleArrowPrev = document.getElementById('scheduleArrowPrev');
+const scheduleArrowNext = document.getElementById('scheduleArrowNext');
+
+if (scheduleListContainer && scheduleArrowPrev && scheduleArrowNext) {
+    // Clonar todos os items de schedule da estrutura original
+    const scheduleItems = `
+        <div class="schedule-item animate-slide-left delay-1">
+            <div class="schedule-date">
+                <span class="date-day">13</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Igarassu</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-2">
+            <div class="schedule-date">
+                <span class="date-day">14</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Vitória de Santo Antão</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-3">
+            <div class="schedule-date">
+                <span class="date-day">15</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Jaboatão dos Guararapes</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bloco Fala Mãe Anda Juntos</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-1">
+            <div class="schedule-date">
+                <span class="date-day">15</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Recife</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Pina - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-2">
+            <div class="schedule-date">
+                <span class="date-day">15</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Escada</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-3">
+            <div class="schedule-date">
+                <span class="date-day">16</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Camaragibe</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-4">
+            <div class="schedule-date">
+                <span class="date-day">16</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Buenos Aires</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-5">
+            <div class="schedule-date">
+                <span class="date-day">17</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Recife</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Casa Amarela - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-6">
+            <div class="schedule-date">
+                <span class="date-day">17</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Jaboatão dos Guararapes</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-1">
+            <div class="schedule-date">
+                <span class="date-day">17</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Recife</h3>
+                <p><i class="fas fa-map-marker-alt"></i> NB Society - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-2">
+            <div class="schedule-date">
+                <span class="date-day">18</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Paulista</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-3">
+            <div class="schedule-date">
+                <span class="date-day">21</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Fernando de Noronha</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Perdoa Péricles - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-4">
+            <div class="schedule-date">
+                <span class="date-day">22</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Cavaleiro Fest</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jaboatão dos Guararapes - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-5">
+            <div class="schedule-date">
+                <span class="date-day">22</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Camaragibe</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-6">
+            <div class="schedule-date">
+                <span class="date-day">27</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Camaragibe</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Praça Pública - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-1">
+            <div class="schedule-date">
+                <span class="date-day">28</span>
+                <span class="date-month">FEV</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Vicência</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Povoado Angélicas - PE</p>
+            </div>
+        </div>
+        <div class="schedule-item animate-slide-left delay-2">
+            <div class="schedule-date">
+                <span class="date-day">01</span>
+                <span class="date-month">MAR</span>
+            </div>
+            <div class="schedule-info">
+                <h3>Cohab Fest</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jaboatão dos Guararapes - PE</p>
+            </div>
+        </div>
+    `;
+
+    scheduleListContainer.innerHTML = scheduleItems;
+
+    // Controlar setas de navegação
+    function updateArrowState() {
+        const scrollLeft = scheduleListContainer.scrollLeft;
+        const scrollWidth = scheduleListContainer.scrollWidth;
+        const clientWidth = scheduleListContainer.clientWidth;
+
+        scheduleArrowPrev.disabled = scrollLeft === 0;
+        scheduleArrowNext.disabled = scrollLeft + clientWidth >= scrollWidth - 1;
+    }
+
+    // Scroll com setas
+    const scrollAmount = 250;
+
+    scheduleArrowPrev.addEventListener('click', () => {
+        scheduleListContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    scheduleArrowNext.addEventListener('click', () => {
+        scheduleListContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    // Atualizar estado das setas ao scroll
+    scheduleListContainer.addEventListener('scroll', updateArrowState);
+    window.addEventListener('resize', updateArrowState);
+
+    // Inicial
+    setTimeout(updateArrowState, 100);
+}

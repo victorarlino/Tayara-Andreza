@@ -1395,23 +1395,57 @@ img {
     align-items: center;
 }
 
-.schedule-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
+.schedule-carousel-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-top: 30px;
+    position: relative;
+}
+
+.schedule-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 8px 0;
+    flex: 1;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.schedule-list::-webkit-scrollbar {
+    height: 4px;
+}
+
+.schedule-list::-webkit-scrollbar-track {
+    background: rgba(244, 194, 194, 0.2);
+    border-radius: 10px;
+}
+
+.schedule-list::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 10px;
+}
+
+.schedule-list::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-orange);
 }
 
 .schedule-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 10px;
     background: white;
-    padding: 12px 14px;
-    border-radius: 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    min-width: 200px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .schedule-item:hover {
@@ -1448,31 +1482,103 @@ img {
 }
 
 .schedule-info h3 {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-    color: black
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: black;
+    font-weight: 700;
 }
 
 .schedule-info p {
-    margin: 5px 0;
+    margin: 3px 0;
     color: #000000;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
 }
 
 .schedule-info i {
     color: #000000;
-    margin-right: 8px;
+    margin-right: 6px;
+    font-size: 0.75rem;
+}
+
+/* Setas de navegação */
+.schedule-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+    box-shadow: var(--shadow);
+}
+
+.schedule-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+}
+
+.schedule-arrow:active {
+    transform: scale(0.95);
+}
+
+.schedule-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .schedule-item {
         text-align: left;
-        padding: 12px;
+        padding: 10px 12px;
+        min-width: 180px;
     }
 
-    .schedule-list {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .schedule-info h3 {
+        font-size: 0.80rem;
+    }
+
+    .schedule-info p {
+        font-size: 0.70rem;
+    }
+
+    .schedule-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-carousel-container {
+        gap: 8px;
+    }
+
+    .schedule-item {
+        min-width: 160px;
+        padding: 8px 10px;
+    }
+
+    .schedule-info h3 {
+        font-size: 0.75rem;
+    }
+
+    .schedule-info p {
+        font-size: 0.65rem;
+        margin: 2px 0;
+    }
+
+    .schedule-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
     }
 }
 /* Estilos específicos da página de contato */
