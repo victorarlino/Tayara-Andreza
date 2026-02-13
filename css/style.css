@@ -2239,7 +2239,7 @@ img {
 
 .item-info p {
     font-size: 0.95rem;
-    color: #999;
+    color: #010101;
     margin: 0 0 auto 0;
 }
 
@@ -2250,7 +2250,7 @@ img {
     width: 100%;
     text-align: center;
     background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange)) !important;
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
