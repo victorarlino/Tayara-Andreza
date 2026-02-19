@@ -925,14 +925,14 @@ img {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
         justify-items: center;
-        max-width: 180px;
+        max-width: 220px;
         margin: 0 auto;
     }
 
     .social-highlights .social-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.25rem;
+        width: 64px;
+        height: 64px;
+        font-size: 1.55rem;
     }
 
     .gallery-section {
