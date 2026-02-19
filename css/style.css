@@ -9,7 +9,7 @@
     --primary-pink: #F4C2C2;
     --secondary-orange: #FFB6C1;
     --accent-gold: #FFF0F5;
-    --dark-bg: #000000;
+    --dark-bg: #000000; 
     --light-bg: #1a1a1a;
     --text-dark: #2d2d2d;
     --text-light: #ffffff;
@@ -20,7 +20,7 @@
 html {
     scroll-behavior: smooth;
 }
-
+/* cor do site */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -906,6 +906,35 @@ img {
 
 /* Responsividade */
 @media (max-width: 768px) {
+    .hero {
+        min-height: 100svh;
+        height: 100svh;
+    }
+
+    .hero-content {
+        padding-top: 100px;
+    }
+
+    .volume-control {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .social-highlights {
+        gap: 20px;
+    }
+
+    .social-highlights .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .gallery-section {
+        padding: 80px 0;
+        min-height: auto;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
