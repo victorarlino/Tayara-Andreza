@@ -1495,11 +1495,11 @@ img {
     align-items: flex-start;
     gap: 10px;
     background: white;
-    padding: 10px 12px;
+    padding: 14px 16px;
     border-radius: 12px;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    min-width: 200px;
+    min-width: 250px;
     flex-shrink: 0;
     scroll-snap-align: start;
 }
@@ -1593,16 +1593,16 @@ img {
 @media (max-width: 768px) {
     .schedule-item {
         text-align: left;
-        padding: 10px 12px;
-        min-width: 180px;
+        padding: 12px 14px;
+        min-width: 220px;
     }
 
     .schedule-info h3 {
-        font-size: 0.80rem;
+        font-size: 0.9rem;
     }
 
     .schedule-info p {
-        font-size: 0.70rem;
+        font-size: 0.78rem;
     }
 
     .schedule-arrow {
@@ -1618,16 +1618,16 @@ img {
     }
 
     .schedule-item {
-        min-width: 160px;
-        padding: 8px 10px;
+        min-width: 190px;
+        padding: 10px 12px;
     }
 
     .schedule-info h3 {
-        font-size: 0.75rem;
+        font-size: 0.82rem;
     }
 
     .schedule-info p {
-        font-size: 0.65rem;
+        font-size: 0.72rem;
         margin: 2px 0;
     }
 
