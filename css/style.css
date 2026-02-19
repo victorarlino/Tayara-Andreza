@@ -1417,8 +1417,8 @@ img {
 .stat-item h3 {
     font-size: 2rem;
     background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
@@ -1512,23 +1512,23 @@ img {
 .schedule-date {
     background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
     color: rgb(0, 0, 0);
-    padding: 10px 12px;
-    border-radius: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
     text-align: center;
-    min-width: 56px;
+    min-width: 64px;
     align-self: flex-start;
 }
 
 .date-day {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
 }
 
 .date-month {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     margin-top: 5px;
 }
@@ -1605,6 +1605,19 @@ img {
         font-size: 0.78rem;
     }
 
+    .schedule-date {
+        padding: 11px 13px;
+        min-width: 60px;
+    }
+
+    .date-day {
+        font-size: 1.45rem;
+    }
+
+    .date-month {
+        font-size: 0.82rem;
+    }
+
     .schedule-arrow {
         width: 36px;
         height: 36px;
@@ -1629,6 +1642,19 @@ img {
     .schedule-info p {
         font-size: 0.72rem;
         margin: 2px 0;
+    }
+
+    .schedule-date {
+        padding: 10px 12px;
+        min-width: 56px;
+    }
+
+    .date-day {
+        font-size: 1.3rem;
+    }
+
+    .date-month {
+        font-size: 0.76rem;
     }
 
     .schedule-arrow {
