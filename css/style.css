@@ -920,6 +920,10 @@ img {
         bottom: 16px;
     }
 
+    .social-highlights-section {
+        padding: 42px 0 52px;
+    }
+
     .social-highlights {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
