@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueci Minha Senha</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/logo/logo_coracao.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/logo/logo_coracao.png" sizes="180x180">
+    <link rel="stylesheet" href="css/esqueci-senha.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+            },
+            {
+                "@type": "WebSite",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Tayara Andreza",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <main class="recovery-layout">
+        <section class="recovery-photo" aria-label="Foto da Tayara para os fãs">
+            <div class="recovery-photo-copy">
+                <h2>Seja bem vindo à central de fãs</h2>
+                <p>tayara andreza</p>
+            </div>
+            <img src="images/fotos/tayara_fans.jpg" alt="Tayara Andreza">
+        </section>
+
+        <section class="recovery-form-area">
+            <div class="recovery-card">
+                <h1>Esqueci minha senha</h1>
+                <p>Informe seu e-mail para confirmar e alterar sua senha.</p>
+
+                <form id="recoveryForm" class="recovery-form">
+                    <label class="field-label" for="email">E-mail</label>
+                    <input id="email" type="email" placeholder="Digite seu e-mail" required>
+
+                    <label class="field-label" for="confirmEmail">Confirmar E-mail</label>
+                    <input id="confirmEmail" type="email" placeholder="Confirme seu e-mail" required>
+
+                    <label class="field-label" for="newPassword">Nova Senha</label>
+                    <input id="newPassword" type="password" placeholder="Digite sua nova senha" required>
+
+                    <label class="field-label" for="confirmPassword">Confirmar Nova Senha</label>
+                    <input id="confirmPassword" type="password" placeholder="Confirme sua nova senha" required>
+
+                    <button class="primary-btn" type="submit">Alterar senha</button>
+                    <p id="recoveryMessage" class="recovery-message" aria-live="polite"></p>
+                    <p class="recovery-link">Lembrou sua senha?<a href="fans.html">Acesse</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/esqueci-senha.js"></script>
+</body>
+</html>

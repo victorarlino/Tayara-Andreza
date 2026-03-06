@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #F4C2C2 0%, #000000 100%);
+    color: #ffffff;
+}
+
+.recovery-layout {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 41% 59%;
+}
+
+.recovery-photo {
+    position: relative;
+    overflow: hidden;
+}
+
+.recovery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 14%;
+    transform: scale(1.03);
+    filter: contrast(1.03) saturate(1.04);
+    display: block;
+}
+
+.recovery-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.22));
+    pointer-events: none;
+    z-index: 2;
+}
+
+.recovery-photo-copy {
+    position: absolute;
+    top: 26px;
+    left: 24px;
+    right: 24px;
+    z-index: 3;
+    text-align: left;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.recovery-photo-copy h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.recovery-photo-copy p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.recovery-form-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 28px;
+}
+
+.recovery-card {
+    width: 100%;
+    max-width: 560px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+}
+
+.recovery-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 6px;
+}
+
+.recovery-card p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 14px;
+    font-size: 0.94rem;
+}
+
+.recovery-form {
+    display: grid;
+    gap: 10px;
+}
+
+.field-label {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.recovery-form input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    padding: 9px 11px;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recovery-form input::placeholder {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.recovery-form input:focus {
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(244, 194, 194, 0.2);
+}
+
+.primary-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #F4C2C2, #FFB6C1);
+    color: #1f1f1f;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 4px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(244, 194, 194, 0.45);
+}
+
+.recovery-link {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+.recovery-link a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-left: 6px;
+}
+
+.recovery-message {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    text-align: center;
+    min-height: 18px;
+}
+
+.recovery-message.success {
+    color: #d8ffd8;
+}
+
+.recovery-message.error {
+    color: #ffd8d8;
+}
+
+@media (max-width: 900px) {
+    .recovery-layout {
+        grid-template-columns: 1fr;
+        overflow: auto;
+    }
+
+    .recovery-photo {
+        min-height: 32vh;
+    }
+
+    .recovery-photo-copy {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+    }
+
+    .recovery-photo-copy h2 {
+        font-size: 1.1rem;
+    }
+
+    .recovery-photo-copy p {
+        font-size: 0.92rem;
+    }
+
+    .recovery-form-area {
+        padding: 16px;
+    }
+}

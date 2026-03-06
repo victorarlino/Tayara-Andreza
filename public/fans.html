@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fãs</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/logo/logo_coracao.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/logo/logo_coracao.png" sizes="180x180">
+    <link rel="stylesheet" href="css/fans.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+            },
+            {
+                "@type": "WebSite",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Tayara Andreza",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <main class="fans-layout">
+        <section class="fans-photo" aria-label="Foto da Tayara para os fãs">
+            <div class="fans-photo-copy">
+                
+            </div>
+            <img src="images/fotos/tayara_fans.jpg" alt="Tayara Andreza">
+        </section>
+
+        <section class="fans-form-area">
+            <div class="fans-card">
+                <h1>Acessar Conta</h1>
+                <p>Faça login na sua conta utilizando suas credenciais.</p>
+                <form class="fans-form" id="loginForm">
+                    <label class="field-label" for="email">E-mail</label>
+                    <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+
+                    <label class="field-label" for="senha">Senha</label>
+                    <input id="senha" type="password" name="senha" placeholder="Digite sua senha" required>
+
+                    <div class="fans-actions">
+                        <a href="esqueci-senha.html" class="fans-link">Esqueci minha senha</a>
+                        <button type="submit">Entrar</button>
+                        <p class="create-account">Não tem uma conta?<a href="cadastro.html">Criar Conta</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="js/fans.js"></script>
+</body>
+</html>

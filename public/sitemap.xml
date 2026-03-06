@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+    <!-- Home Page -->
+    <url>
+        <loc>https://tayaraandreza.com/</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://tayaraandreza.com/images/logo/TAYARA_logo01.png</image:loc>
+            <image:title>Logo Tayara Andreza</image:title>
+        </image:image>
+        <video:video>
+            <video:thumbnail_loc>https://tayaraandreza.com/images/logo/TAYARA_logo01.png</video:thumbnail_loc>
+            <video:title>Apresentação Tayara Andreza - Cantora de Brega Romântico</video:title>
+            <video:description>Vídeo de apresentação da cantora e artista Tayara Andreza especializada em brega romântico</video:description>
+        </video:video>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/fans.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/cadastro.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/esqueci-senha.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/fa-clube.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/perfil.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/oficializar-fa-clube.html</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Section URLs -->
+    <url>
+        <loc>https://tayaraandreza.com/#galeria</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/#historia</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/#login</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://tayaraandreza.com/#contato</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+</urlset>

@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-pink: #F4C2C2;
+    --secondary-orange: #FFB6C1;
+    --accent-gold: #FFF0F5;
+    --text-light: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-light);
+    background: linear-gradient(180deg, var(--primary-pink) 0%, #000000 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.fanclub-header {
+    width: min(1200px, 94vw);
+    margin: 18px auto 0;
+    padding: 20px 24px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: auto minmax(500px, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.fanclub-header h1 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    text-align: left;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.fanclub-search {
+    width: 100%;
+    max-width: 650px;
+    justify-self: stretch;
+}
+
+.fanclub-search input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--text-light);
+    padding: 13px 20px;
+    font-size: 0.98rem;
+    font-weight: 400;
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.fanclub-search input::placeholder {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.fanclub-search input:focus {
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(244, 194, 194, 0.2);
+    transform: none;
+}
+
+.fanclub-user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+#fanclubUserName {
+    font-weight: 600;
+}
+
+.avatar-label {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.14);
+    position: relative;
+    padding: 0;
+}
+
+.avatar-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.avatar-placeholder {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.fanclub-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 140px;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(18, 18, 18, 0.92);
+    border: 1px solid rgba(244, 194, 194, 0.4);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    display: grid;
+    gap: 8px;
+    z-index: 20;
+}
+
+.fanclub-menu[hidden] {
+    display: none !important;
+}
+
+.fanclub-menu-item {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: rgba(244, 194, 194, 0.18);
+    color: var(--text-light);
+    text-decoration: none;
+    text-align: left;
+    font-size: 0.94rem;
+    cursor: pointer;
+}
+
+.fanclub-menu-item:hover {
+    background: rgba(255, 182, 193, 0.3);
+}
+
+.fanclub-main {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.fanclub-message {
+    width: min(900px, 100%);
+    text-align: center;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.25);
+    padding: 30px 24px;
+}
+
+.fanclub-message p {
+    font-size: 1.2rem;
+    line-height: 1.75;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.fanclub-register-btn {
+    margin-top: 20px;
+    border: none;
+    border-radius: 14px;
+    padding: 13px 24px;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-orange));
+    color: #1f1f1f;
+    font-weight: 700;
+    font-size: 1.02rem;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(244, 194, 194, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.fanclub-register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(244, 194, 194, 0.45);
+    filter: brightness(1.03);
+}
+
+.fanclub-alert {
+    margin: 24px auto 0;
+    max-width: 760px;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+@media (max-width: 980px) {
+    .fanclub-header {
+        width: calc(100% - 28px);
+        margin-top: 14px;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .fanclub-search {
+        width: 100%;
+        max-width: none;
+    }
+
+    .fanclub-user {
+        justify-content: flex-start;
+    }
+
+    .fanclub-main {
+        min-height: calc(100vh - 130px);
+    }
+
+    .fanclub-message p {
+        font-size: 1rem;
+    }
+
+    .fanclub-register-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,8 @@
+# Robots.txt for Tayara Andreza Website
+# https://tayaraandreza.com/
+
+User-agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: https://tayaraandreza.com/sitemap.xml

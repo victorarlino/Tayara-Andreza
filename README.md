@@ -1,4 +1,4 @@
-# Site Tayara Andreza - Artista de Forró
+# Site Tayara Andreza - Cantora de Brega Romântico
 
 Site moderno, responsivo de página única (single-page) com design elegante preto e branco para divulgação e contratação da artista.
 
@@ -234,7 +234,7 @@ O site foi otimizado completamente para aparecer em primeiro lugar quando algué
 
 1. **Meta Tags SEO**
    - Descrição otimizada com palavras-chave
-   - Keywords estratégicas (forró, artista, cantora, eventos)
+   - Keywords estratégicas (brega romântico, artista, cantora, eventos)
    - Author e theme color configurados
    - Robots directives para melhor indexação
 
@@ -362,7 +362,7 @@ Escolha uma hospedagem que suporte:
 
 1. **Postar regularmente** em Instagram/YouTube aumenta autoridade
 2. **Atualizar biografia/descrição** mantém conteúdo fresco
-3. **Usar hashtags relevantes**: #forró #cantora #eventos #contratações
+3. **Usar hashtags relevantes**: #bregaromantico #cantora #eventos #contratações
 4. **Obter backlinks** pedindo para:
    - Sites de eventos musicais
    - Blogs de música brasileira

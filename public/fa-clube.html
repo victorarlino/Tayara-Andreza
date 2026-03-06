@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fã Clube</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/logo/logo_coracao.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/logo/logo_coracao.png" sizes="180x180">
+    <link rel="stylesheet" href="css/fa-clube.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+            },
+            {
+                "@type": "WebSite",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Tayara Andreza",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="fanclub-header">
+        <h1>Central de Fãns da Tayara Andreza</h1>
+        <div class="fanclub-search">
+            <input type="search" placeholder="Pesquisar fãs e fã-clubes..." aria-label="Pesquisar fãs e fã-clubes">
+        </div>
+
+        <div class="fanclub-user">
+            <span id="fanclubUserName">Olá, fã!</span>
+            <button type="button" class="avatar-label" id="avatarToggle" aria-label="Abrir menu do usuário" aria-expanded="false">
+                <img id="fanclubUserPhoto" alt="Foto do usuário" hidden>
+                <span id="avatarPlaceholder" class="avatar-placeholder">+</span>
+            </button>
+
+            <div class="fanclub-menu" id="fanclubMenu" hidden>
+                <a href="perfil.html" class="fanclub-menu-item">Perfil</a>
+                <button type="button" id="logoutButton" class="fanclub-menu-item">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="fanclub-main">
+        <section class="fanclub-message">
+            <p>Bem-vindos a Central de Fãs Tayara Andreza! Tenha benefícios exclusivos, fique por dentro de todas as novidades da melhor cantora do brega romântico, participe de sorteios de camarim e muito mais.</p>
+            <a href="oficializar-fa-clube.html" class="fanclub-register-btn">Cadastrar Fã Clube</a>
+            <p class="fanclub-alert">Aviso: se você tiver fã clube no Instagram e TikTok e cadastrar os dois, suas chances de ganhar prêmios dobram.</p>
+        </section>
+    </main>
+
+    <script src="js/fa-clube.js"></script>
+</body>
+</html>

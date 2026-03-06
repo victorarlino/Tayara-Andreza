@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficializar Fã Clube</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/logo/logo_coracao.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/logo/logo_coracao.png" sizes="180x180">
+    <link rel="stylesheet" href="css/oficializar-fa-clube.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+            },
+            {
+                "@type": "WebSite",
+                "name": "Tayara Andreza",
+                "url": "https://tayaraandreza.com/",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Tayara Andreza",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-title-wrap">
+                <i class="fa-regular fa-star"></i>
+                <div>
+                    <h1>Central de Fãs da Tayara Andreza</h1>
+                    <p>Painel de oficialização de fã clube</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="official-card">
+            <header class="official-card-header">
+                <div class="official-title-wrap">
+                    <i class="fa-regular fa-star"></i>
+                    <h2>Oficializar Fã Clube</h2>
+                </div>
+                <a href="fa-clube.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i>Voltar</a>
+            </header>
+
+            <div class="avatar-area">
+                <div class="avatar-preview" id="avatarPreview" aria-label="Foto do fã clube">
+                    <i class="fa-regular fa-user"></i>
+                    <img id="avatarImage" alt="Foto do fã clube" hidden>
+                    <button type="button" id="cameraBtn" class="camera-btn" aria-label="Enviar foto">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+                    <input id="avatarInput" type="file" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <form class="official-form" id="officialForm">
+                <div class="form-group">
+                    <label for="fanClubName">Nome do Fã Clube</label>
+                    <input id="fanClubName" type="text" placeholder="Insira o nome" maxlength="80">
+                    <p class="helper-text"><span id="nameCount">0</span> de 80 caracteres</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="fanClubUrl">Url do fã clube</label>
+                    <input id="fanClubUrl" type="text" value="https://centraldefas.taynara.com.br/">
+                </div>
+
+                <div class="form-group">
+                    <label for="foundationDate">Data de Fundação</label>
+                    <div class="date-wrap">
+                        <input id="foundationDate" type="date" placeholder="dd/mm/aaaa">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+                </div>
+
+                <div class="form-grid-two">
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <select id="estado">
+                            <option value="" selected>Selecione</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <select id="cidade">
+                            <option value="" selected>Selecione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid-two">
+                    <div class="form-group">
+                        <label for="redeSocial">Rede Social</label>
+                        <select id="redeSocial">
+                            <option value="Instagram">Instagram</option>
+                            <option value="TikTok">TikTok</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="redeSocialUrl">Url da rede social</label>
+                        <input id="redeSocialUrl" type="text" placeholder="Insira a url">
+                    </div>
+                </div>
+
+                <button type="button" class="add-social-btn">Adicionar Rede Social</button>
+                <p class="social-feedback" id="socialFeedback" aria-live="polite"></p>
+
+                <div class="form-group">
+                    <label for="descricao">Conte sobre seu Fã clube</label>
+                    <textarea id="descricao" placeholder="Descreva em 160 caracteres" maxlength="160"></textarea>
+                    <p class="helper-text"><span id="descriptionCount">0</span> de 160 caracteres</p>
+                </div>
+
+                <div class="submit-wrap">
+                    <button type="submit" class="submit-btn">Enviar para Análise</button>
+                </div>
+                <p class="submit-feedback" id="submitFeedback" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/oficializar-fa-clube.js"></script>
+</body>
+</html>
