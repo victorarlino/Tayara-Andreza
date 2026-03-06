@@ -3,6 +3,25 @@ const { getSupabaseClient, getSupabaseAdminClient } = require('../supabase');
 
 const router = express.Router();
 
+function normalizeDate(value) {
+    const raw = String(value || '').trim();
+
+    if (!raw) {
+        return null;
+    }
+
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+        return raw;
+    }
+
+    if (/^\d{2}\/\d{2}\/\d{4}$/.test(raw)) {
+        const [day, month, year] = raw.split('/');
+        return `${year}-${month}-${day}`;
+    }
+
+    return null;
+}
+
 router.post('/register', async (req, res) => {
     try {
         const {
@@ -41,7 +60,7 @@ router.post('/register', async (req, res) => {
         const emailNormalizado = email.trim().toLowerCase();
         const supabase = getSupabaseClient();
 
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
             email: emailNormalizado,
             password: senha,
             options: {
@@ -62,6 +81,29 @@ router.post('/register', async (req, res) => {
             }
 
             return res.status(400).json({ message: error.message });
+        }
+
+        if (data?.user?.id) {
+            const supabaseAdmin = getSupabaseAdminClient();
+            const { error: pessoaError } = await supabaseAdmin
+                .from('pessoas')
+                .upsert(
+                    {
+                        user_id: data.user.id,
+                        nome_completo: nome.trim(),
+                        data_nascimento: normalizeDate(nascimento),
+                        email: emailNormalizado,
+                        telefone: telefone.trim(),
+                        pais: (pais || 'Brasil').trim(),
+                        estado: estado.trim(),
+                        cidade: cidade.trim()
+                    },
+                    { onConflict: 'user_id' }
+                );
+
+            if (pessoaError) {
+                return res.status(500).json({ message: `Conta criada, mas falhou ao cadastrar pessoa: ${pessoaError.message}` });
+            }
         }
 
         return res.status(201).json({ message: 'Conta criada com sucesso!' });
@@ -96,6 +138,9 @@ router.post('/login', async (req, res) => {
                 id: data.user.id,
                 email: data.user.email,
                 nome: data.user.user_metadata?.nome || ''
+            },
+            session: {
+                accessToken: data.session?.access_token || null
             }
         });
     } catch (error) {

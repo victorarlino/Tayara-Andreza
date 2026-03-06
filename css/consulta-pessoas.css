@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #f4c2c2 0%, #000 100%);
+    color: #fff;
+}
+
+.page {
+    width: min(1100px, 94vw);
+    margin: 24px auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    padding: 22px;
+    display: grid;
+    gap: 16px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h1 {
+    font-size: 1.35rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.filters input,
+.filters button {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    padding: 10px 12px;
+    outline: none;
+}
+
+.filters input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.filters button {
+    cursor: pointer;
+    background: #000;
+}
+
+.feedback {
+    min-height: 18px;
+    font-weight: 600;
+}
+
+.table-wrap {
+    overflow: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+th {
+    background: rgba(0, 0, 0, 0.35);
+    font-weight: 600;
+}
+
+.danger-btn {
+    border: 1px solid rgba(255, 99, 132, 0.7);
+    background: rgba(255, 99, 132, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.danger-btn:hover {
+    background: rgba(255, 99, 132, 0.35);
+}
+
+@media (max-width: 900px) {
+    .filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filters button {
+        grid-column: 1 / -1;
+    }
+}

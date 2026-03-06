@@ -7,6 +7,7 @@ const profileMenuLink = document.querySelector('.fanclub-menu-item[href="perfil.
 const logoutButton = document.getElementById('logoutButton');
 const defaultUserName = 'fã';
 const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
+const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
 
 function getCurrentUserKey() {
     return localStorage.getItem(CURRENT_USER_KEY_STORAGE) || 'guest';
@@ -77,6 +78,7 @@ document.addEventListener('click', (event) => {
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem(CURRENT_USER_KEY_STORAGE);
+        localStorage.removeItem(CURRENT_USER_ACCESS_TOKEN_KEY);
         window.location.href = 'index.html';
     });
 }

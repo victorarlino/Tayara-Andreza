@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Pessoas</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/consulta-pessoas.css">
+</head>
+<body>
+    <main class="page">
+        <section class="card">
+            <header class="card-header">
+                <h1>Consulta de Pessoas</h1>
+                <a href="fa-clube.html" class="back-link">Voltar</a>
+            </header>
+
+            <form id="searchForm" class="filters">
+                <input id="nome" type="text" placeholder="Nome">
+                <input id="email" type="text" placeholder="E-mail">
+                <input id="cidade" type="text" placeholder="Cidade">
+                <input id="estado" type="text" placeholder="Estado">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>País</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows"></tbody>
+                </table>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fã Clube</th>
+                            <th>Responsável</th>
+                            <th>E-mail</th>
+                            <th>Data de Criação</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Instagram</th>
+                            <th>TikTok</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fanClubRows"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/consulta-pessoas.js?v=20260306-1"></script>
+</body>
+</html>

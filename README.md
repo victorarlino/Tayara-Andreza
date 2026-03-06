@@ -17,6 +17,23 @@ TAYARA ANDREZA/
 └── README.md           # Este arquivo
 ```
 
+## 🔐 Backend + Supabase (erro 403 no fã-clube)
+
+Se aparecer `Permissão negada no Supabase (RLS) para cadastrar fã clube`:
+
+1. Crie um arquivo `.env` na raiz com:
+
+```dotenv
+SUPABASE_URL=https://SEU-PROJETO.supabase.co
+SUPABASE_ANON_KEY=SEU_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY=SEU_SERVICE_ROLE_KEY
+PORT=3000
+```
+
+2. Reinicie o backend com `npm start`.
+3. Se não usar `SERVICE_ROLE`, execute o SQL em `server/sql/fan_clubes_policies.sql` no SQL Editor do Supabase.
+4. Verifique diagnóstico em `GET /api/cadastros/diagnostico/supabase`.
+
 ## 🎨 Características
 
 - ✅ Design elegante em preto e branco

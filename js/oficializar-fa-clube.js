@@ -7,22 +7,33 @@ const nameCount = document.getElementById('nameCount');
 const descriptionCount = document.getElementById('descriptionCount');
 const estadoSelect = document.getElementById('estado');
 const cidadeSelect = document.getElementById('cidade');
-const redeSocialSelect = document.getElementById('redeSocial');
-const redeSocialUrlInput = document.getElementById('redeSocialUrl');
-const addSocialBtn = document.querySelector('.add-social-btn');
-const socialFeedback = document.getElementById('socialFeedback');
+const fanClubUrlInput = document.getElementById('fanClubUrl');
+const foundationDateInput = document.getElementById('foundationDate');
+const responsavelInput = document.getElementById('responsavel');
+const telefoneContatoInput = document.getElementById('telefoneContato');
+const instagramUrlInput = document.getElementById('instagramUrl');
+const tiktokUrlInput = document.getElementById('tiktokUrl');
 const submitFeedback = document.getElementById('submitFeedback');
 const officialForm = document.getElementById('officialForm');
+const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
+const CURRENT_USER_NAME_PREFIX = 'fanClubUserName:';
+const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
 
-const socialLinks = {
-    Instagram: '',
-    TikTok: ''
-};
-const usedSocialUrls = new Set();
+function getApiBaseUrl() {
+    const { hostname, port, protocol, origin } = window.location;
 
-function normalizeUrl(url) {
-    return url.trim().toLowerCase();
+    if ((hostname === '127.0.0.1' || hostname === 'localhost') && port === '5500') {
+        return 'http://localhost:3000';
+    }
+
+    if (protocol.startsWith('http')) {
+        return origin;
+    }
+
+    return 'http://localhost:3000';
 }
+
+const API_BASE_URL = getApiBaseUrl();
 
 function updateCounter(input, counterElement) {
     counterElement.textContent = String(input.value.length);
@@ -121,54 +132,87 @@ estadoSelect.addEventListener('change', (event) => {
     carregarCidadesPorEstado(event.target.value);
 });
 
-addSocialBtn.addEventListener('click', () => {
-    const selectedSocial = redeSocialSelect.value;
-    const socialUrl = redeSocialUrlInput.value.trim();
-    const normalizedSocialUrl = normalizeUrl(socialUrl);
-
-    if (!socialUrl) {
-        socialFeedback.textContent = 'Insira a URL antes de adicionar a rede social.';
-        return;
-    }
-
-    const previousUrl = socialLinks[selectedSocial];
-    const normalizedPreviousUrl = previousUrl ? normalizeUrl(previousUrl) : '';
-
-    if (usedSocialUrls.has(normalizedSocialUrl) && normalizedPreviousUrl !== normalizedSocialUrl) {
-        socialFeedback.textContent = 'Essa URL já foi cadastrada. Use uma URL diferente.';
-        return;
-    }
-
-    if (normalizedPreviousUrl && normalizedPreviousUrl !== normalizedSocialUrl) {
-        usedSocialUrls.delete(normalizedPreviousUrl);
-    }
-
-    socialLinks[selectedSocial] = socialUrl;
-    usedSocialUrls.add(normalizedSocialUrl);
-    redeSocialUrlInput.value = '';
-
-    const hasInstagram = Boolean(socialLinks.Instagram);
-    const hasTikTok = Boolean(socialLinks.TikTok);
-
-    if (hasInstagram && hasTikTok) {
-        socialFeedback.textContent = 'Instagram e TikTok adicionados com sucesso.';
-    } else {
-        socialFeedback.textContent = `${selectedSocial} adicionado com sucesso.`;
-    }
-});
-
-officialForm.addEventListener('submit', (event) => {
+officialForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const hasInstagram = Boolean(socialLinks.Instagram);
-    const hasTikTok = Boolean(socialLinks.TikTok);
+    const instagramUrl = instagramUrlInput.value.trim();
+    const tiktokUrl = tiktokUrlInput.value.trim();
+
+    const hasInstagram = Boolean(instagramUrl);
+    const hasTikTok = Boolean(tiktokUrl);
+
+    if (!fanClubNameInput.value.trim()) {
+        submitFeedback.textContent = 'Informe o nome do fã clube.';
+        return;
+    }
 
     if (!hasInstagram || !hasTikTok) {
         submitFeedback.textContent = 'Adicione as duas URLs (Instagram e TikTok) para enviar o cadastro.';
         return;
     }
 
-    submitFeedback.textContent = 'Chance em dobro! Seu cadastro foi enviado para análise.';
+    const currentUserEmail = (localStorage.getItem(CURRENT_USER_KEY_STORAGE) || '').trim().toLowerCase();
+
+    if (!currentUserEmail) {
+        submitFeedback.textContent = 'Faça login novamente para vincular o cadastro ao seu perfil.';
+        return;
+    }
+
+    try {
+        const responsavelLocal = (localStorage.getItem(`${CURRENT_USER_NAME_PREFIX}${currentUserEmail}`) || '').trim();
+        const responsavel = responsavelInput.value.trim() || responsavelLocal;
+        const accessToken = (localStorage.getItem(CURRENT_USER_ACCESS_TOKEN_KEY) || '').trim();
+
+        if (!responsavel) {
+            submitFeedback.textContent = 'Informe o responsável pelo fã clube.';
+            return;
+        }
+
+        const requestHeaders = {
+            'Content-Type': 'application/json'
+        };
+
+        if (accessToken) {
+            requestHeaders.Authorization = `Bearer ${accessToken}`;
+        }
+
+        const response = await fetch(`${API_BASE_URL}/api/cadastros/fan-clubes`, {
+            method: 'POST',
+            headers: requestHeaders,
+            body: JSON.stringify({
+                email: currentUserEmail,
+                responsavel,
+                telefoneContato: telefoneContatoInput.value.trim(),
+                nome: fanClubNameInput.value.trim(),
+                url: fanClubUrlInput.value.trim(),
+                dataFundacao: foundationDateInput.value,
+                estado: estadoSelect.value,
+                cidade: cidadeSelect.value,
+                instagramUrl,
+                tiktokUrl,
+                descricao: descriptionInput.value.trim()
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            const details = result.detail ? ` (${result.detail})` : '';
+            submitFeedback.textContent = `${result.message || 'Não foi possível enviar para análise.'}${details}`;
+            return;
+        }
+
+        submitFeedback.textContent = 'Chance em dobro! Seu cadastro foi enviado para análise.';
+    } catch (error) {
+        submitFeedback.textContent = 'Erro de conexão com o servidor. Tente novamente.';
+    }
 });
+
+const currentUserEmail = (localStorage.getItem(CURRENT_USER_KEY_STORAGE) || '').trim().toLowerCase();
+const defaultResponsavel = (localStorage.getItem(`${CURRENT_USER_NAME_PREFIX}${currentUserEmail}`) || '').trim();
+
+if (defaultResponsavel) {
+    responsavelInput.value = defaultResponsavel;
+}
 
 carregarEstados();

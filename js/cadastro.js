@@ -9,6 +9,23 @@ const telefoneInput = document.getElementById('telefone');
 const paisInput = document.getElementById('pais');
 const senhaInput = document.getElementById('senha');
 const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
+const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
+
+function getApiBaseUrl() {
+    const { hostname, port, protocol, origin } = window.location;
+
+    if ((hostname === '127.0.0.1' || hostname === 'localhost') && port === '5500') {
+        return 'http://localhost:3000';
+    }
+
+    if (protocol.startsWith('http')) {
+        return origin;
+    }
+
+    return 'http://localhost:3000';
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 function setLoadingCities() {
     cidadeSelect.innerHTML = '<option value="" selected>Carregando cidades...</option>';
@@ -82,7 +99,7 @@ if (cadastroForm) {
         }
 
         try {
-            const response = await fetch('/api/auth/register', {
+            const response = await fetch(`${API_BASE_URL}/api/cadastros/user`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -91,7 +108,6 @@ if (cadastroForm) {
                     nome: nomeInput.value.trim(),
                     nascimento: nascimentoInput.value.trim(),
                     email: emailInput.value.trim(),
-                    confirmarEmail: confirmarEmailInput.value.trim(),
                     telefone: telefoneInput.value.trim(),
                     pais: paisInput.value,
                     estado: estadoSelect.value,
@@ -111,6 +127,13 @@ if (cadastroForm) {
 
             localStorage.setItem(CURRENT_USER_KEY_STORAGE, userKey);
             localStorage.setItem(`fanClubUserName:${userKey}`, nomeInput.value.trim() || 'fã');
+
+            if (result.session?.accessToken) {
+                localStorage.setItem(CURRENT_USER_ACCESS_TOKEN_KEY, result.session.accessToken);
+            } else {
+                localStorage.removeItem(CURRENT_USER_ACCESS_TOKEN_KEY);
+            }
+
             localStorage.setItem(
                 `fanClubProfile:${userKey}`,
                 JSON.stringify({

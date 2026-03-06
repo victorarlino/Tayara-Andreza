@@ -5,6 +5,22 @@ const newPassword = document.getElementById('newPassword');
 const confirmPassword = document.getElementById('confirmPassword');
 const message = document.getElementById('recoveryMessage');
 
+function getApiBaseUrl() {
+    const { hostname, port, protocol, origin } = window.location;
+
+    if ((hostname === '127.0.0.1' || hostname === 'localhost') && port === '5500') {
+        return 'http://localhost:3000';
+    }
+
+    if (protocol.startsWith('http')) {
+        return origin;
+    }
+
+    return 'http://localhost:3000';
+}
+
+const API_BASE_URL = getApiBaseUrl();
+
 if (recoveryForm) {
     recoveryForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -31,7 +47,7 @@ if (recoveryForm) {
         }
 
         try {
-            const response = await fetch('/api/auth/reset-password', {
+            const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

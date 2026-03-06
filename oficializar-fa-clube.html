@@ -71,6 +71,17 @@
             </div>
 
             <form class="official-form" id="officialForm">
+                <div class="form-grid-two">
+                    <div class="form-group">
+                        <label for="responsavel">Responsável</label>
+                        <input id="responsavel" type="text" placeholder="Nome do responsável" maxlength="120">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneContato">Telefone de contato</label>
+                        <input id="telefoneContato" type="text" placeholder="(00) 00000-0000" maxlength="20">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="fanClubName">Nome do Fã Clube</label>
                     <input id="fanClubName" type="text" placeholder="Insira o nome" maxlength="80">
@@ -107,21 +118,14 @@
 
                 <div class="form-grid-two">
                     <div class="form-group">
-                        <label for="redeSocial">Rede Social</label>
-                        <select id="redeSocial">
-                            <option value="Instagram">Instagram</option>
-                            <option value="TikTok">TikTok</option>
-                        </select>
+                        <label for="instagramUrl">URL do Instagram</label>
+                        <input id="instagramUrl" type="text" placeholder="https://instagram.com/...">
                     </div>
                     <div class="form-group">
-                        <label for="redeSocialUrl">Url da rede social</label>
-                        <input id="redeSocialUrl" type="text" placeholder="Insira a url">
+                        <label for="tiktokUrl">URL do TikTok</label>
+                        <input id="tiktokUrl" type="text" placeholder="https://tiktok.com/@...">
                     </div>
-                    
                 </div>
-
-                <button type="button" class="add-social-btn">Adicionar Rede Social</button>
-                <p class="social-feedback" id="socialFeedback" aria-live="polite"></p>
 
                 <div class="form-group">
                     <label for="descricao">Conte sobre seu Fã clube</label>
