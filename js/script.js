@@ -168,9 +168,7 @@ navLinks.forEach(link => {
         const targetId = link.getAttribute('href');
 
         if (!targetId || !targetId.startsWith('#')) {
-            e.preventDefault();
             closeMobileMenu();
-            window.location.href = targetId || 'fans.html';
             return;
         }
 
