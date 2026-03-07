@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Fã Clube</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="images/logo/logo_coracao.png" sizes="32x32">
@@ -37,9 +38,15 @@
 </head>
 <body>
     <header class="fanclub-header">
-        <h1>Central de Fãns da Tayara Andreza</h1>
+        <div class="fanclub-title-wrap">
+            <p class="fanclub-kicker">Comunidade oficial</p>
+            <h1>Central de Fãns da Tayara Andreza</h1>
+        </div>
+
         <div class="fanclub-search">
-            <input type="search" placeholder="Pesquisar fãs e fã-clubes..." aria-label="Pesquisar fãs e fã-clubes">
+            <span class="fanclub-search-icon" aria-hidden="true">&#128269;</span>
+            <input id="fanclubSearchInput" type="search" placeholder="Pesquisar fãs e fã-clubes..." aria-label="Pesquisar fãs e fã-clubes" autocomplete="off">
+            <div id="fanclubSearchResults" class="fanclub-search-results" hidden></div>
         </div>
 
         <div class="fanclub-user">
@@ -57,13 +64,45 @@
     </header>
 
     <main class="fanclub-main">
-        <section class="fanclub-message">
-            <p>Bem-vindos a Central de Fãs Tayara Andreza! Tenha benefícios exclusivos, fique por dentro de todas as novidades da melhor cantora do brega romântico, participe de sorteios de camarim e muito mais.</p>
-            <a href="oficializar-fa-clube.html" class="fanclub-register-btn">Cadastrar Fã Clube</a>
-            <p class="fanclub-alert">Aviso: se você tiver fã clube no Instagram e TikTok e cadastrar os dois, suas chances de ganhar prêmios dobram.</p>
-        </section>
+        <div class="fanclub-layout">
+            <section class="fanclub-message">
+                <p class="fanclub-message-label">Bem-vindo ao seu espaço VIP</p>
+                <h2>Fique por dentro de tudo e oficialize seu fã-clube com estilo</h2>
+                <p class="fanclub-description">Tenha benefícios exclusivos, acompanhe novidades da artista e participe de sorteios especiais de camarim. Quanto mais ativo o seu fã-clube, maior sua presença na comunidade.</p>
+
+                <div class="fanclub-quick-points" aria-label="Destaques rápidos">
+                    <span>Benefícios exclusivos</span>
+                    <span>Prioridade em campanhas</span>
+                    <span>Mais visibilidade</span>
+                </div>
+
+                <a href="oficializar-fa-clube.html" class="fanclub-register-btn">Cadastrar Fã Clube</a>
+                <p class="fanclub-alert">Dica: se você tiver fã-clube no Instagram e no TikTok, cadastre os dois para dobrar suas chances em ações promocionais.</p>
+            </section>
+
+            <aside class="fanclub-sidepanel" aria-label="Destaques da comunidade">
+                <article class="fanclub-highlight-card compact">
+                    <h3>Vantagens para fã-clubes oficiais</h3>
+                    <ul>
+                        <li>Prioridade em sorteios exclusivos</li>
+                        <li>Acesso antecipado a novidades</li>
+                        <li>Maior visibilidade na comunidade</li>
+                    </ul>
+                </article>
+
+                <article class="fanclub-highlight-card compact">
+                    <h3>Como oficializar</h3>
+                    <ol class="fanclub-steps">
+                        <li>Clique em <strong>Cadastrar Fã Clube</strong>.</li>
+                        <li>Preencha os dados e envie para análise.</li>
+                        <li>Aguarde nosso contato via WhatsApp com as orientações para a premiação.</li>
+                    </ol>
+                </article>
+            </aside>
+        </div>
     </main>
 
+    <script src="js/runtime-config.js"></script>
     <script src="js/fa-clube.js"></script>
 </body>
 </html>

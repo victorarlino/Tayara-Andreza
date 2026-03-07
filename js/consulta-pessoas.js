@@ -15,13 +15,15 @@ const SUPABASE_BEARER = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ
 
 function getApiBaseUrl() {
     const { hostname, port, protocol, origin } = window.location;
+    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
+    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
 
-    if (hostname === '127.0.0.1' && port === '5500') {
-        return 'http://localhost:3000';
+    if (configuredBaseUrl) {
+        return configuredBaseUrl.replace(/\/$/, '');
     }
 
-    if (hostname === 'localhost' && port === '5500') {
-        return 'http://localhost:3000';
+    if (isLocalhost && port !== '3000') {
+        return `${protocol}//${hostname}:3000`;
     }
 
     if (protocol.startsWith('http')) {

@@ -7,9 +7,15 @@ const message = document.getElementById('recoveryMessage');
 
 function getApiBaseUrl() {
     const { hostname, port, protocol, origin } = window.location;
+    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
+    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
 
-    if ((hostname === '127.0.0.1' || hostname === 'localhost') && port === '5500') {
-        return 'http://localhost:3000';
+    if (configuredBaseUrl) {
+        return configuredBaseUrl.replace(/\/$/, '');
+    }
+
+    if (isLocalhost && port !== '3000') {
+        return `${protocol}//${hostname}:3000`;
     }
 
     if (protocol.startsWith('http')) {

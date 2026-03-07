@@ -20,7 +20,7 @@ const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
 let isEditing = false;
 
 function getCurrentUserKey() {
-	return localStorage.getItem(CURRENT_USER_KEY_STORAGE) || 'guest';
+	return String(localStorage.getItem(CURRENT_USER_KEY_STORAGE) || 'guest').trim().toLowerCase();
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -219,9 +219,33 @@ if (isProfileOwner) {
 			});
 	});
 } else {
+	setEditMode(false);
+
 	if (profileActions) {
 		profileActions.hidden = true;
 	}
+
+	if (toggleEditBtn) {
+		toggleEditBtn.disabled = true;
+	}
+
+	if (editPhotoBtn) {
+		editPhotoBtn.hidden = true;
+	}
+
+	if (profilePhotoInput) {
+		profilePhotoInput.value = '';
+		profilePhotoInput.disabled = true;
+	}
+
+	if (saveProfileBtn) {
+		saveProfileBtn.hidden = true;
+		saveProfileBtn.disabled = true;
+	}
+
+	[cityInput, stateInput, birthDateInput, socialInput, fanclubUrlInput, bioInput].forEach((field) => {
+		field.disabled = true;
+	});
 
 	if (profileMessage) {
 		profileMessage.textContent = 'Apenas o dono deste perfil pode editar as informações.';

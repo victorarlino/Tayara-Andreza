@@ -208,6 +208,20 @@ Para publicar o site:
    - Faça upload via FTP
    - Configure o domínio
 
+## ☁️ Publicar no Google com backend sempre conectado
+
+Quando o frontend estiver em um domínio do Google, configure a URL pública do backend em:
+
+`js/runtime-config.js`
+
+```javascript
+window.APP_CONFIG.API_BASE_URL = 'https://SEU-BACKEND-PUBLICO.com';
+```
+
+Sem esse ajuste, o frontend pode tentar chamar a API no domínio errado.
+
+Para manter o backend sempre online em produção, hospede a API em um serviço com alta disponibilidade (ex.: Cloud Run com `min instances = 1`, Render, Railway ou VPS com PM2).
+
 ## 💡 Dicas
 
 - Use imagens de boa qualidade (mas otimizadas)
