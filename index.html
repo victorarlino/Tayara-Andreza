@@ -9,6 +9,9 @@
     <meta name="keywords" content="Tayara Andreza, brega romântico, cantora, artista, música brasileira, eventos, contrate artista">
     <meta name="author" content="Tayara Andreza">
     <meta name="theme-color" content="#F4C2C2">
+    <meta name="language" content="pt-BR">
+    <meta name="revisit-after" content="2 days">
+    <meta name="distribution" content="global">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
@@ -25,6 +28,7 @@
     <meta property="og:image:alt" content="Logo oficial da Tayara Andreza">
     <meta property="og:site_name" content="Tayara Andreza">
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:updated_time" content="2026-03-07T12:00:00-03:00">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -64,9 +68,10 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Tayara Andreza",
-        "image": "images/logo/TAYARA_logo01.png",
+        "image": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png",
         "description": "Cantora e artista de brega romântico com presença em plataformas musicais e redes sociais",
         "url": "https://tayaraandreza.com/",
+        "inLanguage": "pt-BR",
         "sameAs": [
             "https://www.youtube.com/@TayaraAndrezaOficial",
             "https://instagram.com/tayaraandreza",
@@ -113,7 +118,7 @@
         "name": "Tayara Andreza",
         "description": "Artista de Brega Romântico Profissional",
         "url": "https://tayaraandreza.com/",
-        "image": "images/logo/TAYARA_logo01.png",
+        "image": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png",
         "genre": ["Brega Romântico", "Sertanejo", "Música Brasileira"],
         "knowsAbout": ["Brega Romântico", "Música ao Vivo", "Eventos"]
     }
@@ -154,6 +159,7 @@
     </header>
 
     <!-- Banner Principal -->
+                    "description": "Site oficial da cantora Tayara Andreza para agenda, músicas, contato e contratações.",
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -164,6 +170,54 @@
         <div class="hero-image">
             <video id="heroVideo" autoplay muted loop playsinline>
                 <source src="videos/tayara_video.mp4" type="video/mp4">
+
+                <!-- Structured Data para Organization -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Tayara Andreza",
+                    "url": "https://tayaraandreza.com/",
+                    "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png",
+                    "sameAs": [
+                        "https://www.youtube.com/@TayaraAndrezaOficial",
+                        "https://instagram.com/tayaraandreza",
+                        "https://open.spotify.com/artist/0N78z4PhvpchRlJhXNVrKh"
+                    ],
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "contactType": "customer support",
+                        "availableLanguage": ["pt-BR"],
+                        "url": "https://tayaraandreza.com/#contato"
+                    }
+                }
+                </script>
+
+                <!-- Structured Data para FAQ -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Como contratar Tayara Andreza para eventos?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "A contratação pode ser feita pela seção de contato no site oficial, com retorno da equipe para alinhamento de data e formato do evento."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Onde ouvir as músicas da Tayara Andreza?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "As músicas estão disponíveis nas plataformas oficiais como Spotify e YouTube, com links diretos no site oficial."
+                            }
+                        }
+                    ]
+                }
+                </script>
             </video>
         </div>
         <div class="volume-control">
