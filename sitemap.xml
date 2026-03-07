@@ -6,7 +6,7 @@
     <!-- Home Page -->
     <url>
         <loc>https://tayaraandreza.com/</loc>
-        <lastmod>2026-03-05</lastmod>
+        <lastmod>2026-03-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -18,27 +18,6 @@
             <video:title>Apresentação Tayara Andreza - Cantora de Brega Romântico</video:title>
             <video:description>Vídeo de apresentação da cantora e artista Tayara Andreza especializada em brega romântico</video:description>
         </video:video>
-    </url>
-
-    <url>
-        <loc>https://tayaraandreza.com/fans.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://tayaraandreza.com/cadastro.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://tayaraandreza.com/esqueci-senha.html</loc>
-        <lastmod>2026-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
     </url>
 
 </urlset>
