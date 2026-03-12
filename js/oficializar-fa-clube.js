@@ -11,8 +11,8 @@ const fanClubUrlInput = document.getElementById('fanClubUrl');
 const foundationDateInput = document.getElementById('foundationDate');
 const responsavelInput = document.getElementById('responsavel');
 const telefoneContatoInput = document.getElementById('telefoneContato');
-const instagramUrlInput = document.getElementById('instagramUrl');
-const tiktokUrlInput = document.getElementById('tiktokUrl');
+const socialPlatformSelect = document.getElementById('socialPlatform');
+const socialUrlInput = document.getElementById('socialUrl');
 const submitFeedback = document.getElementById('submitFeedback');
 const officialForm = document.getElementById('officialForm');
 const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
@@ -141,19 +141,18 @@ estadoSelect.addEventListener('change', (event) => {
 officialForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const instagramUrl = instagramUrlInput.value.trim();
-    const tiktokUrl = tiktokUrlInput.value.trim();
-
-    const hasInstagram = Boolean(instagramUrl);
-    const hasTikTok = Boolean(tiktokUrl);
+    const socialPlatform = socialPlatformSelect.value;
+    const socialHandle = socialUrlInput.value.trim().replace(/^@/, '');
+    const instagramUrl = socialPlatform === 'instagram' ? `https://instagram.com/${socialHandle}` : '';
+    const tiktokUrl = socialPlatform === 'tiktok' ? `https://tiktok.com/@${socialHandle}` : '';
 
     if (!fanClubNameInput.value.trim()) {
         submitFeedback.textContent = 'Informe o nome do fã clube.';
         return;
     }
 
-    if (!hasInstagram || !hasTikTok) {
-        submitFeedback.textContent = 'Adicione as duas URLs (Instagram e TikTok) para enviar o cadastro.';
+    if (!socialHandle) {
+        submitFeedback.textContent = 'Informe o @ da rede social do fã clube.';
         return;
     }
 
