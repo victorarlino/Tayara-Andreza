@@ -53,7 +53,31 @@ const SUPABASE_ANON_KEY =
     sanitizeEnvValue(process.env.APIKEY) ||
     'sb_publishable_2EfqfV5GqNDtejVD5KF5sQ_fwuyxhL-';
 
-app.use(cors());
+const allowedOrigins = [
+    'https://tayaraandreza.com.br',
+    'http://tayaraandreza.com.br',
+    'https://www.tayaraandreza.com.br',
+    'http://www.tayaraandreza.com.br',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Permite requisições sem origin (ex: curl, Postman, apps mobile)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        return callback(new Error('Origem não permitida pelo CORS: ' + origin));
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+}));
+
+// Responde imediatamente aos preflight requests
+app.options('*', cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
