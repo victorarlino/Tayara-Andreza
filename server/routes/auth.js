@@ -150,49 +150,30 @@ router.post('/login', async (req, res) => {
 
 router.post('/reset-password', async (req, res) => {
     try {
-        const { email, confirmarEmail, novaSenha, confirmarNovaSenha } = req.body;
+        const { email, confirmarEmail, redirectTo } = req.body;
 
-        if (!email || !confirmarEmail || !novaSenha || !confirmarNovaSenha) {
-            return res.status(400).json({ message: 'Preencha todos os campos.' });
+        if (!email || !confirmarEmail) {
+            return res.status(400).json({ message: 'Informe e confirme o e-mail.' });
         }
 
         if (email.trim().toLowerCase() !== confirmarEmail.trim().toLowerCase()) {
             return res.status(400).json({ message: 'Os e-mails não conferem.' });
         }
 
-        if (novaSenha !== confirmarNovaSenha) {
-            return res.status(400).json({ message: 'As senhas não conferem.' });
-        }
-
-        if (novaSenha.length < 6) {
-            return res.status(400).json({ message: 'A nova senha deve ter pelo menos 6 caracteres.' });
-        }
-
         const emailNormalizado = email.trim().toLowerCase();
-        const supabaseAdmin = getSupabaseAdminClient();
-        const { data: usersData, error: usersError } = await supabaseAdmin.auth.admin.listUsers();
+        const supabase = getSupabaseClient();
+        const resetOptions = redirectTo
+            ? { redirectTo: String(redirectTo).trim() }
+            : undefined;
+        const { error } = await supabase.auth.resetPasswordForEmail(emailNormalizado, resetOptions);
 
-        if (usersError) {
-            return res.status(500).json({ message: 'Erro ao consultar usuários no Supabase.' });
+        if (error) {
+            return res.status(400).json({ message: 'Não foi possível enviar o e-mail de recuperação.' });
         }
 
-        const user = usersData.users.find((item) => item.email?.toLowerCase() === emailNormalizado);
-
-        if (!user) {
-            return res.status(404).json({ message: 'Conta não encontrada para este e-mail.' });
-        }
-
-        const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(user.id, {
-            password: novaSenha
-        });
-
-        if (updateError) {
-            return res.status(500).json({ message: 'Erro ao atualizar senha no Supabase.' });
-        }
-
-        return res.json({ message: 'Senha alterada com sucesso!' });
+        return res.json({ message: 'Link de recuperação enviado com sucesso!' });
     } catch (error) {
-        return res.status(500).json({ message: 'Erro interno ao alterar senha.' });
+        return res.status(500).json({ message: 'Erro interno ao enviar recuperação de senha.' });
     }
 });
 

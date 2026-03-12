@@ -49,7 +49,7 @@
         <section class="recovery-form-area">
             <div class="recovery-card">
                 <h1>Esqueci minha senha</h1>
-                <p>Informe seu e-mail para confirmar e alterar sua senha.</p>
+                <p id="recoveryIntro">Informe seu e-mail para receber o link de recuperação de senha.</p>
 
                 <form id="recoveryForm" class="recovery-form">
                     <label class="field-label" for="email">E-mail</label>
@@ -58,13 +58,15 @@
                     <label class="field-label" for="confirmEmail">Confirmar E-mail</label>
                     <input id="confirmEmail" type="email" placeholder="Confirme seu e-mail" required>
 
-                    <label class="field-label" for="newPassword">Nova Senha</label>
-                    <input id="newPassword" type="password" placeholder="Digite sua nova senha" required>
+                    <div id="passwordFields" hidden>
+                        <label class="field-label" for="newPassword">Nova Senha</label>
+                        <input id="newPassword" type="password" placeholder="Digite sua nova senha">
 
-                    <label class="field-label" for="confirmPassword">Confirmar Nova Senha</label>
-                    <input id="confirmPassword" type="password" placeholder="Confirme sua nova senha" required>
+                        <label class="field-label" for="confirmPassword">Confirmar Nova Senha</label>
+                        <input id="confirmPassword" type="password" placeholder="Confirme sua nova senha">
+                    </div>
 
-                    <button class="primary-btn" type="submit">Alterar senha</button>
+                    <button class="primary-btn" id="recoverySubmitBtn" type="submit">Enviar link de recuperação</button>
                     <p id="recoveryMessage" class="recovery-message" aria-live="polite"></p>
                     <p class="recovery-link">Lembrou sua senha?<a href="fans.html">Acesse</a></p>
                 </form>
@@ -72,6 +74,7 @@
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="js/runtime-config.js"></script>
     <script src="js/esqueci-senha.js"></script>
 </body>
