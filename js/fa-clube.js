@@ -12,28 +12,6 @@ const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
 const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
 let searchDebounceTimer = null;
 
-function getApiBaseUrl() {
-    const { hostname, port, protocol, origin } = window.location;
-    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
-    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
-
-    if (configuredBaseUrl) {
-        return configuredBaseUrl.replace(/\/$/, '');
-    }
-
-    if (isLocalhost && port !== '3000') {
-        return `${protocol}//${hostname}:3000`;
-    }
-
-    if (protocol.startsWith('http')) {
-        return origin;
-    }
-
-    return 'http://localhost:3000';
-}
-
-const API_BASE_URL = getApiBaseUrl();
-
 function getCurrentUserKey() {
     return localStorage.getItem(CURRENT_USER_KEY_STORAGE) || 'guest';
 }
@@ -176,7 +154,7 @@ async function fetchPessoasBySearchTerm(searchTerm) {
     params.set('nome', searchTerm);
     params.set('limit', '8');
 
-    const response = await fetch(`${API_BASE_URL}/api/cadastros/pessoas?${params.toString()}`, {
+    const response = await window.APP_API.request(`/api/cadastros/pessoas?${params.toString()}`, {
         method: 'GET'
     });
 
@@ -215,7 +193,7 @@ async function fetchFanClubesBySearchTerm(searchTerm) {
     params.set('nome', searchTerm);
     params.set('limit', '6');
 
-    const response = await fetch(`${API_BASE_URL}/api/cadastros/fan-clubes?${params.toString()}`, {
+    const response = await window.APP_API.request(`/api/cadastros/fan-clubes?${params.toString()}`, {
         method: 'GET',
         headers: getSearchRequestHeaders()
     });

@@ -5,59 +5,39 @@ const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
 const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
 const ADMIN_CONSULTA_EMAIL = 'victorduartearlino2210@gmail.com';
 
-const SUPABASE_URL = 'https://myyrzxvycljhcubyjaal.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_2EfqfV5GqNDtejVD5KF5sQ_fwuyxhL-';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-function getApiBaseUrl() {
-    const { hostname, port, protocol, origin } = window.location;
-    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
-    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
-
-    if (configuredBaseUrl) {
-        return configuredBaseUrl.replace(/\/$/, '');
-    }
-
-    if (isLocalhost && port !== '3000') {
-        return `${protocol}//${hostname}:3000`;
-    }
-
-    if (protocol.startsWith('http')) {
-        return origin;
-    }
-
-    return 'http://localhost:3000';
-}
-
-const API_BASE_URL = getApiBaseUrl();
-
 if (loginForm) {
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         try {
-            const emailValue = loginEmailInput.value.trim().toLowerCase();
-            const senhaValue = loginPasswordInput.value;
-
-            const { data, error } = await supabaseClient.auth.signInWithPassword({
-                email: emailValue,
-                password: senhaValue
+            const response = await window.APP_API.request('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: loginEmailInput.value.trim(),
+                    senha: loginPasswordInput.value
+                })
             });
 
-            if (error || !data.user) {
-                alert('E-mail ou senha inválidos.');
+            const result = await response.json();
+
+            if (!response.ok) {
+                alert(result.message || 'Não foi possível realizar login.');
                 return;
             }
 
-            const nomeUsuario = (data.user.user_metadata?.nome || '').trim();
+            const nomeUsuario = (result.user?.nome || '').trim();
+            const emailValue = loginEmailInput.value.trim().toLowerCase();
             const fallbackName = emailValue.includes('@') ? emailValue.split('@')[0] : 'fã';
             const userKey = emailValue;
 
             localStorage.setItem(CURRENT_USER_KEY_STORAGE, userKey);
             localStorage.setItem(`fanClubUserName:${userKey}`, nomeUsuario || fallbackName);
 
-            if (data.session?.access_token) {
-                localStorage.setItem(CURRENT_USER_ACCESS_TOKEN_KEY, data.session.access_token);
+            if (result.session?.accessToken) {
+                localStorage.setItem(CURRENT_USER_ACCESS_TOKEN_KEY, result.session.accessToken);
             } else {
                 localStorage.removeItem(CURRENT_USER_ACCESS_TOKEN_KEY);
             }
@@ -69,7 +49,7 @@ if (loginForm) {
 
             window.location.href = 'fa-clube.html';
         } catch (error) {
-            alert('Erro de conexão. Tente novamente.');
+            alert('Erro de conexão com o servidor. Tente novamente.');
         }
     });
 }

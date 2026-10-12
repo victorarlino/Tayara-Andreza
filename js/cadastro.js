@@ -11,28 +11,6 @@ const senhaInput = document.getElementById('senha');
 const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
 const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
 
-function getApiBaseUrl() {
-    const { hostname, port, protocol, origin } = window.location;
-    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
-    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
-
-    if (configuredBaseUrl) {
-        return configuredBaseUrl.replace(/\/$/, '');
-    }
-
-    if (isLocalhost && port !== '3000') {
-        return `${protocol}//${hostname}:3000`;
-    }
-
-    if (protocol.startsWith('http')) {
-        return origin;
-    }
-
-    return 'http://localhost:3000';
-}
-
-const API_BASE_URL = getApiBaseUrl();
-
 function setLoadingCities() {
     cidadeSelect.innerHTML = '<option value="" selected>Carregando cidades...</option>';
     cidadeSelect.disabled = true;
@@ -105,7 +83,7 @@ if (cadastroForm) {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/cadastros/user`, {
+            const response = await window.APP_API.request('/api/cadastros/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

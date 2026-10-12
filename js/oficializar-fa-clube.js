@@ -11,35 +11,13 @@ const fanClubUrlInput = document.getElementById('fanClubUrl');
 const foundationDateInput = document.getElementById('foundationDate');
 const responsavelInput = document.getElementById('responsavel');
 const telefoneContatoInput = document.getElementById('telefoneContato');
-const socialPlatformSelect = document.getElementById('socialPlatform');
-const socialUrlInput = document.getElementById('socialUrl');
+const instagramUrlInput = document.getElementById('instagramUrl');
+const tiktokUrlInput = document.getElementById('tiktokUrl');
 const submitFeedback = document.getElementById('submitFeedback');
 const officialForm = document.getElementById('officialForm');
 const CURRENT_USER_KEY_STORAGE = 'fanClubCurrentUserKey';
 const CURRENT_USER_NAME_PREFIX = 'fanClubUserName:';
 const CURRENT_USER_ACCESS_TOKEN_KEY = 'fanClubCurrentUserAccessToken';
-
-function getApiBaseUrl() {
-    const { hostname, port, protocol, origin } = window.location;
-    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
-    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
-
-    if (configuredBaseUrl) {
-        return configuredBaseUrl.replace(/\/$/, '');
-    }
-
-    if (isLocalhost && port !== '3000') {
-        return `${protocol}//${hostname}:3000`;
-    }
-
-    if (protocol.startsWith('http')) {
-        return origin;
-    }
-
-    return 'http://localhost:3000';
-}
-
-const API_BASE_URL = getApiBaseUrl();
 
 function updateCounter(input, counterElement) {
     counterElement.textContent = String(input.value.length);
@@ -141,18 +119,19 @@ estadoSelect.addEventListener('change', (event) => {
 officialForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const socialPlatform = socialPlatformSelect.value;
-    const socialHandle = socialUrlInput.value.trim().replace(/^@/, '');
-    const instagramUrl = socialPlatform === 'instagram' ? `https://instagram.com/${socialHandle}` : '';
-    const tiktokUrl = socialPlatform === 'tiktok' ? `https://tiktok.com/@${socialHandle}` : '';
+    const instagramUrl = instagramUrlInput.value.trim();
+    const tiktokUrl = tiktokUrlInput.value.trim();
+
+    const hasInstagram = Boolean(instagramUrl);
+    const hasTikTok = Boolean(tiktokUrl);
 
     if (!fanClubNameInput.value.trim()) {
         submitFeedback.textContent = 'Informe o nome do fã clube.';
         return;
     }
 
-    if (!socialHandle) {
-        submitFeedback.textContent = 'Informe o @ da rede social do fã clube.';
+    if (!hasInstagram || !hasTikTok) {
+        submitFeedback.textContent = 'Adicione as duas URLs (Instagram e TikTok) para enviar o cadastro.';
         return;
     }
 
@@ -181,7 +160,7 @@ officialForm.addEventListener('submit', async (event) => {
             requestHeaders.Authorization = `Bearer ${accessToken}`;
         }
 
-        const response = await fetch(`${API_BASE_URL}/api/cadastros/fan-clubes`, {
+        const response = await window.APP_API.request('/api/cadastros/fan-clubes', {
             method: 'POST',
             headers: requestHeaders,
             body: JSON.stringify({

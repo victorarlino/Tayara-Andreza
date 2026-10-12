@@ -351,9 +351,10 @@ img {
     gap: 10px;
     background: transparent;
     cursor: pointer;
-    margin: -10px 0;
+    margin: 6px 0 0;
     transform: scale(1.14);
     transform-origin: left center;
+    flex-shrink: 0;
 }
 
 .logo a {
@@ -361,11 +362,13 @@ img {
     align-items: center;
     text-decoration: none;
     background: transparent;
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 120px;
-    width: auto;
+    width: 180px;
+    height: auto;
+    max-width: none;
     transition: all 0.4s ease;
     background: transparent;
     filter: drop-shadow(0 0 10px rgb(0, 0, 0)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
@@ -675,12 +678,14 @@ img {
     }
 
     .logo {
-        margin: 0;
+        margin: 8px 0 0;
         transform: none;
     }
 
     .logo img {
-        height: 64px;
+        width: 340px;
+        height: auto;
+        max-width: none;
         filter: drop-shadow(0 0 6px rgba(244, 194, 194, 0.6));
     }
 

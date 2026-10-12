@@ -5,7 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "dev": "node server/server.js",
+    "build": "node scripts/build.js",
+    "build:watch": "node scripts/build-watch.js",
+    "build:zip": "node scripts/build-zip.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",

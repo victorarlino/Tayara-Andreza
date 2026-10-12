@@ -13,28 +13,6 @@ const SUPABASE_PESSOAS_URL = 'https://myyrzxvycljhcubyjaal.supabase.co/rest/v1/p
 const SUPABASE_API_KEY = 'sb_publishable_2EfqfV5GqNDtejVD5KF5sQ_fwuyxhL-';
 const SUPABASE_BEARER = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im15eXJ6eHZ5Y2xqaGN1YnlqYWFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTgwOTcsImV4cCI6MjA4ODMzNDA5N30.PcXyphhcsiBAsbPLxI6JqQls86ZHA2zQsKyniMifkQw';
 
-function getApiBaseUrl() {
-    const { hostname, port, protocol, origin } = window.location;
-    const configuredBaseUrl = String(window.APP_CONFIG?.API_BASE_URL || '').trim();
-    const isLocalhost = hostname === '127.0.0.1' || hostname === 'localhost';
-
-    if (configuredBaseUrl) {
-        return configuredBaseUrl.replace(/\/$/, '');
-    }
-
-    if (isLocalhost && port !== '3000') {
-        return `${protocol}//${hostname}:3000`;
-    }
-
-    if (protocol.startsWith('http')) {
-        return origin;
-    }
-
-    return 'http://localhost:3000';
-}
-
-const API_BASE_URL = getApiBaseUrl();
-
 function enforceConsultaAccess() {
     const currentUserEmail = (localStorage.getItem(CURRENT_USER_KEY_STORAGE) || '').trim().toLowerCase();
 
@@ -182,7 +160,7 @@ async function buscarPessoas() {
     const requestHeaders = getAuthHeaders();
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/cadastros/pessoas?${params.toString()}`, {
+        const response = await window.APP_API.request(`/api/cadastros/pessoas?${params.toString()}`, {
             headers: requestHeaders
         });
         const result = await response.json();
@@ -201,7 +179,7 @@ async function buscarPessoas() {
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/cadastros/fan-clubes?${params.toString()}`, {
+        const response = await window.APP_API.request(`/api/cadastros/fan-clubes?${params.toString()}`, {
             headers: requestHeaders
         });
         const result = await response.json();
@@ -231,7 +209,7 @@ async function excluirPessoa(id) {
         return;
     }
 
-    const response = await fetch(`${API_BASE_URL}/api/cadastros/pessoas/${encodeURIComponent(id)}`, {
+    const response = await window.APP_API.request(`/api/cadastros/pessoas/${encodeURIComponent(id)}`, {
         method: 'DELETE',
         headers: getAuthHeaders()
     });
@@ -266,15 +244,15 @@ async function excluirFanClube(id) {
     }
 
     const endpoints = [
-        `${API_BASE_URL}/api/cadastros/fan-clubes/${encodeURIComponent(id)}`,
-        `${API_BASE_URL}/api/cadastros/fan_clubes/${encodeURIComponent(id)}`
+        `/api/cadastros/fan-clubes/${encodeURIComponent(id)}`,
+        `/api/cadastros/fan_clubes/${encodeURIComponent(id)}`
     ];
 
     let response = null;
     let result = null;
 
     for (const endpoint of endpoints) {
-        response = await fetch(endpoint, {
+        response = await window.APP_API.request(endpoint, {
             method: 'DELETE',
             headers: getAuthHeaders()
         });

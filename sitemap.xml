@@ -5,16 +5,16 @@
     
     <!-- Home Page -->
     <url>
-        <loc>https://tayaraandreza.com/</loc>
+        <loc>https://tayaraandreza.com.br/</loc>
         <lastmod>2026-03-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://tayaraandreza.com/images/logo/TAYARA_logo01.png</image:loc>
+            <image:loc>https://tayaraandreza.com.br/images/logo/TAYARA_logo01.png</image:loc>
             <image:title>Logo Tayara Andreza</image:title>
         </image:image>
         <video:video>
-            <video:thumbnail_loc>https://tayaraandreza.com/images/logo/TAYARA_logo01.png</video:thumbnail_loc>
+            <video:thumbnail_loc>https://tayaraandreza.com.br/images/logo/TAYARA_logo01.png</video:thumbnail_loc>
             <video:title>Apresentação Tayara Andreza - Cantora de Brega Romântico</video:title>
             <video:description>Vídeo de apresentação da cantora e artista Tayara Andreza especializada em brega romântico</video:description>
         </video:video>

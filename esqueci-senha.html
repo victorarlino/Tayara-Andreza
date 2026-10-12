@@ -16,19 +16,19 @@
             {
                 "@type": "Organization",
                 "name": "Tayara Andreza",
-                "url": "https://tayaraandreza.com/",
-                "logo": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                "url": "https://tayaraandreza.com.br/",
+                "logo": "https://tayaraandreza.com.br/images/logo/TAYARA_logo01.png"
             },
             {
                 "@type": "WebSite",
                 "name": "Tayara Andreza",
-                "url": "https://tayaraandreza.com/",
+                "url": "https://tayaraandreza.com.br/",
                 "publisher": {
                     "@type": "Organization",
                     "name": "Tayara Andreza",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://tayaraandreza.com/images/logo/TAYARA_logo01.png"
+                        "url": "https://tayaraandreza.com.br/images/logo/TAYARA_logo01.png"
                     }
                 }
             }
@@ -49,7 +49,7 @@
         <section class="recovery-form-area">
             <div class="recovery-card">
                 <h1>Esqueci minha senha</h1>
-                <p id="recoveryIntro">Informe seu e-mail para receber o link de recuperação de senha.</p>
+                <p>Informe seu e-mail para confirmar e alterar sua senha.</p>
 
                 <form id="recoveryForm" class="recovery-form">
                     <label class="field-label" for="email">E-mail</label>
@@ -58,15 +58,13 @@
                     <label class="field-label" for="confirmEmail">Confirmar E-mail</label>
                     <input id="confirmEmail" type="email" placeholder="Confirme seu e-mail" required>
 
-                    <div id="passwordFields" hidden>
-                        <label class="field-label" for="newPassword">Nova Senha</label>
-                        <input id="newPassword" type="password" placeholder="Digite sua nova senha">
+                    <label class="field-label" for="newPassword">Nova Senha</label>
+                    <input id="newPassword" type="password" placeholder="Digite sua nova senha" required>
 
-                        <label class="field-label" for="confirmPassword">Confirmar Nova Senha</label>
-                        <input id="confirmPassword" type="password" placeholder="Confirme sua nova senha">
-                    </div>
+                    <label class="field-label" for="confirmPassword">Confirmar Nova Senha</label>
+                    <input id="confirmPassword" type="password" placeholder="Confirme sua nova senha" required>
 
-                    <button class="primary-btn" id="recoverySubmitBtn" type="submit">Enviar link de recuperação</button>
+                    <button class="primary-btn" type="submit">Alterar senha</button>
                     <p id="recoveryMessage" class="recovery-message" aria-live="polite"></p>
                     <p class="recovery-link">Lembrou sua senha?<a href="fans.html">Acesse</a></p>
                 </form>
@@ -74,8 +72,9 @@
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-    <script src="js/runtime-config.js"></script>
-    <script src="js/esqueci-senha.js"></script>
+    <script src="js/runtime-config.js?v=20260307-6"></script>
+    <script src="js/api-client.js?v=20260307-6"></script>
+    <script src="js/fetch-guard.js?v=20260307-6"></script>
+    <script src="js/esqueci-senha.js?v=20260307-6"></script>
 </body>
 </html>
